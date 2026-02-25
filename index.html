@@ -4,39 +4,105 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Learning Notes | Personal Blog</title>
-    <meta name="description" content="A simple public learning blog with notes and infographics." />
+    <meta name="description" content="A professional learning blog with notes, infographics, and practical principles." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="container">
-        <p class="kicker">Learning Notes</p>
-        <h1>Personal Blog</h1>
-        <p class="lead">Short notes from my courses, paired with infographics.</p>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html">Learning Notes</a>
+        <nav class="nav">
+          <a href="index.html">Home</a>
+          <a href="posts/12-agile-principles.html">Agile Principles</a>
+        </nav>
+        <a class="button small" href="posts/12-agile-principles.html">Featured</a>
+      </div>
+    </header>
+
+    <header class="site-hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">Executive Brief</p>
+          <h1>Learning Notes</h1>
+          <p class="lead">
+            Concise, boardroom-ready summaries for aligning product, delivery, and leadership teams.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="posts/12-agile-principles.html">Open the latest brief</a>
+            <a class="button secondary" href="#posts">Browse briefs</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h4>Brief Overview</h4>
+          <div class="stat-grid">
+            <div class="stat">
+              <strong>1</strong>
+              <span class="meta">Published insights</span>
+            </div>
+            <div class="stat">
+              <strong>12</strong>
+              <span class="meta">Agile principles</span>
+            </div>
+            <div class="stat">
+              <strong>Weekly</strong>
+              <span class="meta">Learning cadence</span>
+            </div>
+            <div class="stat">
+              <strong>Infographic</strong>
+              <span class="meta">Visual summary</span>
+            </div>
+          </div>
+          <p class="meta">Updated February 25, 2026 · Built for leadership alignment.</p>
+        </div>
       </div>
     </header>
 
     <main class="container">
-      <section class="post-list">
-        <h2>Posts</h2>
-        <article class="card">
-          <p class="meta">February 25, 2026</p>
-          <h3><a href="posts/12-agile-principles.html">The 12 Agile Principles</a></h3>
-          <p>A practical walkthrough of the Agile Manifesto principles, with a visual summary.</p>
-          <a class="button" href="posts/12-agile-principles.html">Read post</a>
-        </article>
+      <section id="posts">
+        <div class="section-header">
+          <div>
+            <h2>Featured Briefs</h2>
+            <p>Structured notes designed for executives, product leaders, and delivery teams.</p>
+          </div>
+          <span class="meta">Latest update · February 25, 2026</span>
+        </div>
+        <div class="post-grid">
+          <article class="card">
+            <p class="meta">February 25, 2026</p>
+            <h3><a href="posts/12-agile-principles.html">The 12 Agile Principles</a></h3>
+            <p>A professional walkthrough of the Agile Manifesto principles, with a clean infographic summary.</p>
+            <a class="button" href="posts/12-agile-principles.html">Read brief</a>
+          </article>
+          <article class="card">
+            <p class="meta">Next up</p>
+            <h3>Leadership alignment</h3>
+            <p>Upcoming summaries on delivery leadership, roadmap alignment, and stakeholder communication.</p>
+            <a class="button secondary" href="posts/12-agile-principles.html">Preview format</a>
+          </article>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container">
-        <p>Built with HTML, CSS, and vanilla JS. Hosted on GitHub Pages.</p>
+      <div class="container footer-grid">
+        <div>
+          <h5>Purpose</h5>
+          <p>Shareable briefs for teams that need clarity and momentum.</p>
+        </div>
+        <div>
+          <h5>Focus Areas</h5>
+          <p>Agile delivery, product management, and strategic execution.</p>
+        </div>
+        <div>
+          <h5>Connect</h5>
+          <p>Built with HTML and CSS. Optimized for quick sharing and internal presentations.</p>
+        </div>
       </div>
     </footer>
   </body>
