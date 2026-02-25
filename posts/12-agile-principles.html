@@ -33,30 +33,26 @@
         <div>
           <p class="kicker">Executive Brief</p>
           <h1>The 12 Agile Principles</h1>
-          <p class="lead">A concise interpretation of each principle, designed for leadership alignment.</p>
+          <p class="lead">A visual-first summary for quick team alignment.</p>
           <div class="hero-actions">
             <a class="button" href="#infographic">View infographic</a>
             <a class="button secondary" href="#principles">Jump to principles</a>
           </div>
         </div>
         <div class="hero-card">
-          <h4>Brief Summary</h4>
-          <div class="stat-grid">
+          <h4>Quick Brief</h4>
+          <div class="stat-grid compact-stats">
             <div class="stat">
               <strong>12</strong>
-              <span class="meta">Core principles</span>
+              <span class="meta">Principles</span>
             </div>
             <div class="stat">
-              <strong>2001</strong>
-              <span class="meta">Manifesto origin</span>
+              <strong>6 min</strong>
+              <span class="meta">Read time</span>
             </div>
             <div class="stat">
-              <strong>Focus</strong>
-              <span class="meta">Customer value</span>
-            </div>
-            <div class="stat">
-              <strong>Outcome</strong>
-              <span class="meta">Faster delivery</span>
+              <strong>Infographic</strong>
+              <span class="meta">Primary format</span>
             </div>
           </div>
           <p class="meta">Published February 25, 2026</p>
@@ -66,27 +62,23 @@
 
     <main class="container post-layout">
       <section class="post-body">
-        <div class="brief-meta">
-          <span>Audience: Executive & delivery leadership</span>
-          <span>Read time: 6 minutes</span>
-          <span>Format: Infographic + notes</span>
-        </div>
-        <figure id="infographic" class="infographic">
+        <figure id="infographic" class="infographic spotlight">
           <img
             id="infographic-img"
             src="../assets/images/12-agile-principles.png"
             alt="Infographic summarizing the 12 Agile principles"
             loading="lazy"
           />
-          <figcaption>Infographic: The 12 Agile Principles.</figcaption>
+          <figcaption>Click to open and zoom.</figcaption>
         </figure>
 
+        <div class="brief-meta">
+          <span>Audience: Executive and delivery leadership</span>
+          <span>Use case: Team kickoff and alignment sessions</span>
+        </div>
+
         <div class="content">
-          <p>
-            The Agile Manifesto principles are a practical guide for building software in a way that keeps
-            users happy, teams aligned, and delivery steady. Below is a concise explanation of each one
-            and how it shows up in real work.
-          </p>
+          <p>Use the infographic first, then skim these compact notes.</p>
 
           <ol id="principles" class="principles">
             <li><strong>Deliver value early and continuously.</strong> Release small, useful increments so customers get benefit quickly and can steer priorities.</li>
@@ -103,11 +95,6 @@
             <li><strong>Regular reflection and adjustment.</strong> Retrospectives keep the team improving their process and results.</li>
           </ol>
 
-          <p>
-            Together, these principles push teams to deliver real value, stay adaptable, and keep quality
-            high without sacrificing people or pace.
-          </p>
-
           <section class="references">
             <h3>References</h3>
             <ul>
@@ -118,17 +105,10 @@
         </div>
       </section>
 
-      <aside class="post-aside">
-        <div class="aside-card">
-          <h4>Key Takeaways</h4>
-          <p>Agile principles emphasize early value, tight collaboration, and continuous learning.</p>
-        </div>
-        <div class="aside-card">
-          <h4>Shareable Summary</h4>
-          <p>Use this page and infographic to align stakeholders on delivery expectations and team behaviors.</p>
-        </div>
+      <aside class="post-aside minimal-aside">
         <div class="aside-card">
           <h4>Next Step</h4>
+          <p>Share the infographic in your next planning or retro session.</p>
           <p><a href="../index.html#posts">Browse related learning notes</a></p>
         </div>
       </aside>
@@ -163,7 +143,9 @@
           </div>
         </div>
         <div class="lightbox-stage">
-          <img id="lightbox-img" src="../assets/images/12-agile-principles.png" alt="Infographic enlarged view" />
+          <div class="lightbox-canvas" id="lightbox-canvas">
+            <img id="lightbox-img" src="../assets/images/12-agile-principles.png" alt="Infographic enlarged view" />
+          </div>
         </div>
       </div>
     </div>
@@ -178,18 +160,30 @@
         const zoomOutBtn = document.getElementById("zoom-out");
         const zoomResetBtn = document.getElementById("zoom-reset");
         const stage = lightbox.querySelector(".lightbox-stage");
+        const canvas = document.getElementById("lightbox-canvas");
         let scale = 1;
 
+        const getFitScale = () => {
+          const naturalWidth = lightboxImg.naturalWidth || lightboxImg.width;
+          const naturalHeight = lightboxImg.naturalHeight || lightboxImg.height;
+          const stageWidth = Math.max(stage.clientWidth - 24, 1);
+          const stageHeight = Math.max(stage.clientHeight - 24, 1);
+          return Math.min(stageWidth / naturalWidth, stageHeight / naturalHeight, 1);
+        };
+
         const applyScale = () => {
-          lightboxImg.style.transform = `scale(${scale})`;
+          canvas.style.transform = `scale(${scale})`;
         };
 
         const open = () => {
-          scale = 1;
-          applyScale();
           lightbox.classList.add("open");
           lightbox.setAttribute("aria-hidden", "false");
           document.body.style.overflow = "hidden";
+          requestAnimationFrame(() => {
+            scale = getFitScale();
+            applyScale();
+            stage.scrollTo({ top: 0, left: 0, behavior: "auto" });
+          });
         };
 
         const close = () => {
@@ -216,7 +210,7 @@
         });
 
         zoomResetBtn.addEventListener("click", () => {
-          scale = 1;
+          scale = getFitScale();
           applyScale();
           stage.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         });
